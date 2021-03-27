@@ -1,2 +1,2 @@
-alert tcp any any -> any 3399 (content:"login|Initial";)
-alert tcp any any -> any 3399 (content:"0.0.0.0:0";msg: "bot founded";sid:1000001)
+alert tcp any any -> any 3399 (pcre:"/(?:login|Initial)/"; flowbits:set,name; flowbits:noalert; sid:1000000)
+alert tcp any any -> any 3399 (msg:"bot founded"; flowbits:isset,name; sid:1000001;)
